@@ -4,7 +4,7 @@ import java.util.*;
 class io {
     //I wanted to put a scanner in here to read the text file, 
     //but I thought there is already a test text file in other location would be easier.
-    static String filename = "students.txt";
+    static String filename = "test10.txt";
 
     public static void main(String[] args) {
         menu();
@@ -117,16 +117,9 @@ class io {
         searchForDelete(id);
         System.out.print("Are you sure you want to delete this student? (y/n): ");
         String choice = sc.nextLine();
-        if (choice.toLowerCase() == "n") {
-            System.out.print("# Ok. redirecting you to the main menu . . . ");
-            menu();
-        }
-        if(choice.toLowerCase() != "n" || choice.toLowerCase() != "y"){
-            System.out.println("## Wrong choice ##");
-            delete();
-        
-        }
-        try {
+        if (choice.equals("y")) {
+             
+            try {
             FileReader fr = new FileReader(filename);
             BufferedReader br = new BufferedReader(fr);
             String line = br.readLine();
@@ -151,6 +144,15 @@ class io {
         System.out.println("## this is the new list after deleting the student of id #" + id);
         display();
         menu();
+        }else if(choice.equals("n")){
+            System.out.print("# Ok. redirecting you to the main menu . . . ");
+            menu();
+        }else{
+            System.out.println("## Wrong choice ##");
+            delete();
+        
+        }
+        
 
     }
 
@@ -310,6 +312,7 @@ class io {
                     System.out.println("\n");
                     System.out.println("#########################");
                     System.out.println("\n");
+                    break;
                     
 
                 } else {
@@ -318,6 +321,7 @@ class io {
                     System.out.println("#########################");
                     System.out.println("\n");
                     update();
+                    break;
                 }
 
             }
@@ -350,7 +354,7 @@ class io {
                     System.out.println("\n");
                     System.out.println("#########################");
                     System.out.println("\n");
-                    
+                    break;
 
                 } else {
                     System.out.println("#########################");
@@ -358,6 +362,7 @@ class io {
                     System.out.println("#########################");
                     System.out.println("\n");
                     delete();
+                    break;
                 }
 
             }
